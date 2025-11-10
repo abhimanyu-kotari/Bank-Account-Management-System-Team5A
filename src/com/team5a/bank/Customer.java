@@ -1,8 +1,5 @@
 package com.team5a.bank;
 
-/**
- * Represents a customer who owns a bank account.
- */
 public class Customer {
     private final String name;
 

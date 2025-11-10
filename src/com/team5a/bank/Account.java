@@ -2,13 +2,12 @@ package com.team5a.bank;
 
 import java.util.UUID;
 
-/**
- * Abstract base class for bank accounts.
- */
+// Abstraction: Base class with abstract method
 public abstract class Account {
-    protected final String accountNumber;
-    protected final Customer owner;
-    protected double balance;
+
+    private final String accountNumber;
+    private final Customer owner;
+    private double balance;   // Encapsulated
 
     public Account(Customer owner) {
         this.accountNumber = UUID.randomUUID().toString();
@@ -28,24 +27,26 @@ public abstract class Account {
         return balance;
     }
 
+    // Deposit logic (common for all)
     public void deposit(double amount) {
         if (amount <= 0) {
-            throw new IllegalArgumentException("Deposit amount must be positive");
+            throw new IllegalArgumentException("Deposit must be positive");
         }
         balance += amount;
-        System.out.println("Deposited ₹" + amount + ". New balance: ₹" + balance);
+        System.out.println("Deposited ₹" + amount + ", New Balance: ₹" + balance);
     }
 
+    // Base withdrawal (can be overridden)
     public void withdraw(double amount) {
         if (amount <= 0) {
-            throw new IllegalArgumentException("Withdrawal amount must be positive");
+            throw new IllegalArgumentException("Withdrawal must be positive");
         }
         if (amount > balance) {
             throw new IllegalArgumentException("Insufficient funds");
         }
         balance -= amount;
-        System.out.println("Withdrew ₹" + amount + ". New balance: ₹" + balance);
+        System.out.println("Withdrew ₹" + amount + ", New Balance: ₹" + balance);
     }
 
-    public abstract String getAccountType();
+    public abstract String getAccountType();  // Abstraction
 }
