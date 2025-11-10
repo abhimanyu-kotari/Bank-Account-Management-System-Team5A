@@ -1,62 +1,66 @@
-🏦 Bank Account Management System – Team 5A
-📘 Overview
+# 🏦 Bank Account Management System – Team 5A
 
-This project is a Java-based Bank Account Management System demonstrating real-world banking operations and core Object-Oriented Programming (OOP) concepts.
+## 📘 Overview
+This project is a **Java-based Bank Account Management System** that demonstrates core Object-Oriented Programming (OOP) concepts while simulating simple banking operations.  
 It supports multiple account types, customer creation, deposits, withdrawals, and overdraft behavior.
 
-The system is simple, modular, and follows clean OOP principles.
+---
 
-👥 Team Members
-Member	Contribution
-Abhimanyu Kotari	Lead Developer, GitHub & Code Integration
-Aniketh	Logic Implementation & Testing
-Kushal S	Code Review & Error Testing
-Chethan	Documentation & Presentation
-🧱 Project Structure
+## 👥 Team Members
+
+| Member | Contribution |
+|--------|--------------|
+| Abhimanyu Kotari | Lead Developer, Git Maintainer |
+| Aniketh | Developer |
+| Kushal S | Tester |
+| Chethan | Documentation |
+
+---
+
+## 🧱 Project Structure
+
 Bank-Account-Management-System-Team5A/
 │
 ├── src/com/team5a/bank/
-│   ├── Account.java
-│   ├── SavingsAccount.java
-│   ├── CurrentAccount.java
-│   ├── Customer.java
-│   └── Main.java
+│ ├── Account.java
+│ ├── SavingsAccount.java
+│ ├── CurrentAccount.java
+│ ├── Customer.java
+│ └── Main.java
 │
 ├── .gitignore
-└── README.md
+└── README.m
 
 
-✅ Only Java source files
-✅ Clean and simple structure
-✅ No unnecessary build/output files
+> ✅ Only Java source files. No compiled `.class` files or build/output folders in the repo.
 
-🧠 Object-Oriented Concepts Demonstrated
-✔ Abstraction
+---
 
-Account is an abstract class defining shared attributes and methods like deposit, withdraw, and getBalance.
+## 🧠 Object-Oriented Concepts Demonstrated
 
-✔ Inheritance
+- **Abstraction:** `Account` is an abstract class defining shared behavior (deposit, withdraw, getBalance).  
+- **Inheritance:** `SavingsAccount` and `CurrentAccount` extend `Account`.  
+- **Polymorphism:** `withdraw()` is overridden (e.g., CurrentAccount supports overdraft).  
+- **Encapsulation:** Fields like `balance`, `owner`, and `accountNumber` are private and exposed via getters/methods.
 
-SavingsAccount and CurrentAccount extend Account and inherit core behavior.
+---
 
-✔ Polymorphism
+## 🚀 How to Compile & Run
 
-withdraw() is overridden in CurrentAccount to support overdraft, showing runtime polymorphism.
-
-✔ Encapsulation
-
-Sensitive data like balance, owner, and accountNumber are protected and accessed via getter methods.
-
-🚀 How to Run the Project
-✅ Step 1: Clone the repo
+1. Clone the repository:
+```bash
 git clone https://github.com/abhimanyu-kotari/Bank-Account-Management-System-Team5A.git
 cd Bank-Account-Management-System-Team5A
 
-✅ Step 2: Compile the source code
+Compile all Java sources:
 javac src/com/team5a/bank/*.java
 
-✅ Step 3: Run the application
+Run the program (from project root):
 java com.team5a.bank.Main
+
+if you compiled into a separate out folder, ensure you run with the correct classpath, e.g.:
+javac -d out src/com/team5a/bank/*.java
+java -cp out com.team5a.bank.Main
 
 🧪 Sample Console Output
 New Savings Account created for Abhimanyu Kotari
@@ -77,20 +81,15 @@ Abhimanyu Kotari | Savings Account | Balance: ₹3800.0
 Abhimanyu Kotari | Current Account | Balance: ₹-4000.0
 =================================
 
+
 🔮 Future Enhancements
 
-Add interest calculation to savings accounts
+Add interest calculation for savings accounts
 
-Implement transaction history
+Maintain transaction history (separate Transaction class)
 
-Add authentication using usernames/passwords
+Implement simple authentication (username/password)
 
-Add database persistence (MySQL / PostgreSQL)
+Persist data to a database (MySQL / PostgreSQL)
 
-Create GUI or web-based interface using JavaFX or Spring Boot
-
-✅ Status
-
-✔ Working
-✔ Clean OOP design
-✔ Ready for presentation and CIE evaluation
+Build GUI (JavaFX) or Web UI (Spring Boot)
