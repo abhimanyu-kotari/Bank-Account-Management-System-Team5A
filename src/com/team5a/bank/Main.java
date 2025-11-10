@@ -1,48 +1,36 @@
 package com.team5a.bank;
 
+/**
+ * Main driver class to test bank account functionality.
+ */
 public class Main {
     public static void main(String[] args) {
-        Bank bank = new Bank();
+        Bank bank = new Bank("Team5A Bank");
 
-        // Create customers
-        Customer c1 = bank.createCustomer("C001", "Abhimanyu Kotari", "abhimanyu@example.com", "9876543210");
-        Customer c2 = bank.createCustomer("C002", "John Doe", "john@example.com", "1234567890");
+        Customer c1 = new Customer("Abhimanyu Kotari");
 
-        System.out.println("Customers created:");
-        System.out.println(c1);
-        System.out.println(c2);
+        SavingsAccount savings = new SavingsAccount(c1);
+        CurrentAccount current = new CurrentAccount(c1);
 
-        // Create accounts
-        Account savings = bank.createSavingsAccount(c1, 0.03); // 3% interest
-        Account current = new CurrentAccount(c2, 2000); // overdraft 2000
-        bank.getAccount(current.getAccountNumber()); // add to accounts map
-        bank.getAccount(savings.getAccountNumber());
+        bank.addAccount(savings);
+        bank.addAccount(current);
 
-        System.out.println("\nAccounts created:");
-        System.out.println(savings.getAccountNumber() + " | Type: " + savings.getAccountType());
-        System.out.println(current.getAccountNumber() + " | Type: " + current.getAccountType());
+        System.out.println("--------------------------------------");
 
-        // Deposit
+        // Test Savings Account
+        System.out.println("Testing Savings Account:");
         savings.deposit(5000);
-        current.deposit(1000);
+        savings.withdraw(1200);
+        System.out.println("Final balance: ₹" + savings.getBalance());
+        System.out.println("--------------------------------------");
 
-        // Withdraw
-        savings.withdraw(1500);
-        current.withdraw(2500); // uses overdraft
+        // Test Current Account
+        System.out.println("Testing Current Account:");
+        current.deposit(2000);
+        current.withdraw(6000); // overdraft test
+        System.out.println("Final balance: ₹" + current.getBalance());
 
-        // Transfer
-        bank.transfer(savings, current, 500);
-
-        // Print balances
-        System.out.println("\nBalances after transactions:");
-        System.out.println(savings.getAccountType() + " " + savings.getAccountNumber() + ": " + savings.getBalance());
-        System.out.println(current.getAccountType() + " " + current.getAccountNumber() + ": " + current.getBalance());
-
-        // Print transaction histories
-        System.out.println("\nTransaction history (Savings):");
-        for (Transaction t : savings.getTransactions()) System.out.println(t);
-
-        System.out.println("\nTransaction history (Current):");
-        for (Transaction t : current.getTransactions()) System.out.println(t);
+        // List all accounts at the end
+        bank.listAccounts();
     }
 }

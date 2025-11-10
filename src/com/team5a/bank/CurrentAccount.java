@@ -1,29 +1,33 @@
 package com.team5a.bank;
 
+/**
+ * Represents a current account.
+ */
 public class CurrentAccount extends Account {
-    private final double overdraftLimit;
 
-    public CurrentAccount(Customer owner, double overdraftLimit) {
+    public CurrentAccount(Customer owner) {
         super(owner);
-        this.overdraftLimit = overdraftLimit;
     }
 
     @Override
     public String getAccountType() {
-        return "CURRENT";
+        return "Current Account";
     }
 
     @Override
     public void withdraw(double amount) {
-        if (amount <= 0) throw new IllegalArgumentException("Withdraw must be > 0");
-        if (balance - amount < -overdraftLimit) {
-            throw new IllegalArgumentException("Insufficient funds (Overdraft limit reached)");
-        }
-        balance -= amount;
-        transactions.add(new Transaction(Transaction.Type.WITHDRAWAL, amount, this));
-    }
+        // Current accounts can go negative up to a limit (say ₹5000)
+        double overdraftLimit = 5000.0;
 
-    public double getOverdraftLimit() {
-        return overdraftLimit;
+        if (amount <= 0) {
+            throw new IllegalArgumentException("Withdrawal amount must be positive");
+        }
+
+        if (amount > balance + overdraftLimit) {
+            throw new IllegalArgumentException("Overdraft limit exceeded");
+        }
+
+        balance -= amount;
+        System.out.println("Withdrew ₹" + amount + ". New balance: ₹" + balance);
     }
 }
