@@ -1,24 +1,31 @@
-# Bank Account Management System (BAMS) - Team 5A
+# Bank Account Management System - Team 5A
 
 ## Project Overview
-This project is a console-based application designed to manage core banking operations, including customer creation, account management, deposits, and withdrawals.
+This project implements a **Bank Account Management System** using **Java Object-Oriented Programming (OOP)** principles.  
+It simulates real-world banking operations, including creating customers and accounts, performing deposits, withdrawals, and transfers, while maintaining transaction histories.
 
-## Technology Stack
-* **Language:** Java 17+
-* **Build Tool:** Maven or Gradle (TBD)
-* **Version Control:** Git / GitHub
+This project was developed by **Team-5A (Student ID: 1RUA24SCS0002)** as part of the **Java OOP course** at RUA College of Science.
 
-## Object-Oriented Design Principles Applied
-1.  **Abstraction & Polymorphism:** Using an abstract `Account` class to define common behavior, with concrete subclasses (`SavingsAccount`, `CheckingAccount`) implementing specific logic.
-2.  **Encapsulation:** Protecting data integrity by making fields private and using controlled accessors/mutators.
-3.  **Single Responsibility Principle (SRP):** Ensuring each class (e.g., `Customer`, `Account`, `Bank`) has one primary responsibility.
+---
 
-## Initial Class Structure
-* `com.team5a.bank.Account` (Abstract)
-* `com.team5a.bank.SavingsAccount`
-* `com.team5a.bank.CheckingAccount`
-* `com.team5a.bank.Customer`
-* `com.team5a.bank.Bank` (or `BankManager`)
+## Features Implemented
 
-## Getting Started
-(To be filled in after the initial code push, including compilation and execution instructions.)
+- **Customer Management**
+  - Create and store customer information: ID, Name, Email, Phone
+- **Account Management**
+  - **SavingsAccount**: Supports deposits, withdrawals, and interest calculation  
+  - **CurrentAccount**: Supports deposits, withdrawals, and overdraft facility
+- **Transactions**
+  - Deposit, Withdrawal, Transfer between accounts
+  - Transaction history with timestamps
+- **Bank Operations**
+  - Manage multiple customers and accounts
+  - Transfer funds between accounts
+- **Object-Oriented Principles Demonstrated**
+  - Encapsulation, Inheritance, Polymorphism, Abstraction
+  - Composition (Bank has Accounts & Customers)
+
+---
+
+## Project Structure
+
